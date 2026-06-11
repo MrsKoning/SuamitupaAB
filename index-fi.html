@@ -86,8 +86,6 @@
     <main>
       <!-- HERO -->
       <section class="hero">
-        <img src="image/mat.jpg" alt="Suomitupas matutbud" class="opacity-70" />
-        <!-- <div class="hero-overlay"></div> -->
         <div class="hero-content">
           <h1>
             Löydä tuoreita suomalaisia elintarvikkeita meiltä Suomitupasta!
@@ -96,12 +94,19 @@
             Aitoja tuotteita suoraan toimittajalta – uusia tuotteita joka viikko
             kahdessa paikassa.
           </p>
+
           <a
             href="https://www.facebook.com/SuomitupaFinskalivsmedel"
             class="hero-btn"
+            ><i class="fa-brands fa-facebook"></i>Ajankohtaiset tapahtumat</a
           >
-            <i class="fa-brands fa-facebook"></i> Ajankohtaiset tapahtumat
-          </a>
+        </div>
+        <div class="hero-image-wrap">
+          <img
+            src="image/mat.jpg"
+            alt="Suomitupas matutbud"
+            class="opacity-70"
+          />
         </div>
       </section>
 
@@ -115,7 +120,7 @@
           <div class="locations-grid" id="oppettider">
             <div class="location-card">
               <div class="card-top">
-                <div class="card-icon">🏪</div>
+                <div class="card-icon" aria-hidden="true">🏪</div>
                 <div>
                   <h3>Myymälä Torshällassa</h3>
                   <p class="card-address">Såggatan 13, 644 30 Torshälla</p>
@@ -143,7 +148,7 @@
 
             <div class="location-card">
               <div class="card-top">
-                <div class="card-icon">🛍</div>
+                <div class="card-icon" aria-hidden="true">🛍</div>
                 <div>
                   <h3>Tori Upplands Väsbyssä</h3>
                   <p class="card-address">Hugo Sabels Torg, Upplands Väsby</p>
@@ -155,6 +160,7 @@
                   <span class="time">10:00 – 14:00</span>
                 </div>
               </div>
+
               <a
                 class="map-link"
                 href="https://maps.google.com/search/?api=1&query=Hugo+Sabels+Torg+Upplands+Väsby"
@@ -177,9 +183,13 @@
           </div>
           <div class="faq-list">
             <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
-                VMitä maksutapoja hyväksytte?
-                <span class="faq-icon">+</span>
+              <button
+                class="faq-question"
+                onclick="toggleFaq(this)"
+                aria-expanded="false"
+              >
+                Mitä maksutapoja hyväksytte?
+                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer">
                 Hyväksymme käteisen, luottokortit sekä mobiilimaksut kuten Swish
@@ -187,9 +197,13 @@
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
+              <button
+                class="faq-question"
+                onclick="toggleFaq(this)"
+                aria-expanded="false"
+              >
                 Myyttekö luomutuotteita?
-                <span class="faq-icon">+</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer">
                 Kyllä, meillä on laaja valikoima luomutuotteita asiakkaille,
@@ -197,9 +211,13 @@
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
+              <button
+                class="faq-question"
+                onclick="toggleFaq(this)"
+                aria-expanded="false"
+              >
                 Voinko tilata kotiinkuljetuksen?
-                <span class="faq-icon">+</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer">
                 Kyllä, voit ottaa meihin yhteyttä puhelimitse tai sähköpostitse,
@@ -207,9 +225,13 @@
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
+              <button
+                class="faq-question"
+                onclick="toggleFaq(this)"
+                aria-expanded="false"
+              >
                 Onko myymälän lähellä parkkipaikkoja?
-                <span class="faq-icon">+</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer">
                 Meillä on ilmainen asiakasparkki aivan myymälän vieressä mukavaa
@@ -232,10 +254,14 @@
               Tervetuloa ottamaan meihin yhteyttä, jos sinulla on kysymyksiä
               tuotteistamme, aukioloajoista tai toimituksesta.
             </p>
-            <p>Puh. 070-755 36 75</p>
+            <p>
+              <a href="tel:+46707553675"
+                ><span class="contact-mobilnr">Puh.</span> 070-755 36 75</a
+              >
+            </p>
             <div class="contact-links">
               <a href="mailto:info@suomitupa.se" class="contact-btn"
-                >✉ info@suomitupa.se</a
+                ><span aria-hidden="true">✉</span> info@suomitupa.se</a
               >
             </div>
           </div>
@@ -257,6 +283,7 @@
         </p>
       </div>
     </footer>
+
     <script>
       // Sticky header färgbyte vid scroll
       const header = document.getElementById("site-header");
@@ -269,15 +296,21 @@
         const answer = btn.nextElementSibling;
         const icon = btn.querySelector(".faq-icon");
         const isOpen = answer.classList.contains("open");
+
         document
           .querySelectorAll(".faq-answer")
           .forEach((a) => a.classList.remove("open"));
         document
+          .querySelectorAll(".faq-question")
+          .forEach((b) => b.setAttribute("aria-expanded", "false"));
+        document
           .querySelectorAll(".faq-icon")
           .forEach((i) => (i.textContent = "+"));
+
         if (!isOpen) {
           answer.classList.add("open");
           icon.textContent = "×";
+          btn.setAttribute("aria-expanded", "true");
         }
       }
 

@@ -85,12 +85,6 @@
     <main>
       <!-- HERO -->
       <section class="hero">
-        <img
-          src="image/mat.jpg"
-          alt="urval av mat som Suomitupa säljer"
-          class="opacity-70"
-        />
-        <!-- <div class="hero-overlay"></div> -->
         <div class="hero-content">
           <h1>Upptäck färska finska livsmedel hos oss på Suomitupa!</h1>
           <p class="hero-sub">
@@ -102,6 +96,13 @@
             class="hero-btn"
             ><i class="fa-brands fa-facebook"></i>För aktuella händelser</a
           >
+        </div>
+        <div class="hero-image-wrap">
+          <img
+            src="image/mat.jpg"
+            alt="urval av mat som Suomitupa säljer"
+            class="opacity-70"
+          />
         </div>
       </section>
 
@@ -115,7 +116,7 @@
           <div class="locations-grid" id="oppettider">
             <div class="location-card">
               <div class="card-top">
-                <div class="card-icon">🏪</div>
+                <div class="card-icon" aria-hidden="true">🏪</div>
                 <div>
                   <h3>Butiken i Torshälla</h3>
                   <p class="card-address">Såggatan 13, 644 30 Torshälla</p>
@@ -143,7 +144,7 @@
 
             <div class="location-card">
               <div class="card-top">
-                <div class="card-icon">🛍</div>
+                <div class="card-icon" aria-hidden="true">🛍</div>
                 <div>
                   <h3>Torget i Upplands Väsby</h3>
                   <p class="card-address">Hugo Sabels Torg, Upplands Väsby</p>
@@ -177,9 +178,13 @@
           </div>
           <div class="faq-list">
             <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
+              <button
+                class="faq-question"
+                onclick="toggleFaq(this)"
+                aria-expanded="false"
+              >
                 Vilka betalningsmetoder accepterar ni?
-                <span class="faq-icon">+</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer">
                 Vi accepterar kontanter, kreditkort och mobila betalningar som
@@ -187,9 +192,13 @@
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
+              <button
+                class="faq-question"
+                onclick="toggleFaq(this)"
+                aria-expanded="false"
+              >
                 Säljer ni ekologiska produkter?
-                <span class="faq-icon">+</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer">
                 Ja, vi erbjuder ett brett utbud av ekologiska produkter för
@@ -197,9 +206,13 @@
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
+              <button
+                class="faq-question"
+                onclick="toggleFaq(this)"
+                aria-expanded="false"
+              >
                 Kan jag beställa hemleverans?
-                <span class="faq-icon">+</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer">
                 Ja, du kan kontakta oss via telefon eller mail, så löser vi det
@@ -207,9 +220,13 @@
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
+              <button
+                class="faq-question"
+                onclick="toggleFaq(this)"
+                aria-expanded="false"
+              >
                 Finns det parkering nära butiken?
-                <span class="faq-icon">+</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer">
                 Vi har gratis parkering för kunder precis intill butiken för en
@@ -232,10 +249,14 @@
               Välkommen att höra av dig till oss om du har frågor om våra
               produkter, öppettider eller leverans?
             </p>
-            <p>Mobilnr. 070-755 36 75</p>
+            <p>
+              <a href="tel:+46707553675"
+                ><span class="contact-mobilnr">Mobil:</span> 070-755 36 75</a
+              >
+            </p>
             <div class="contact-links">
               <a href="mailto:info@suomitupa.se" class="contact-btn"
-                >✉ info@suomitupa.se</a
+                ><span aria-hidden="true">✉</span> info@suomitupa.se</a
               >
             </div>
           </div>
@@ -270,15 +291,21 @@
         const answer = btn.nextElementSibling;
         const icon = btn.querySelector(".faq-icon");
         const isOpen = answer.classList.contains("open");
+
         document
           .querySelectorAll(".faq-answer")
           .forEach((a) => a.classList.remove("open"));
         document
+          .querySelectorAll(".faq-question")
+          .forEach((b) => b.setAttribute("aria-expanded", "false"));
+        document
           .querySelectorAll(".faq-icon")
           .forEach((i) => (i.textContent = "+"));
+
         if (!isOpen) {
           answer.classList.add("open");
           icon.textContent = "×";
+          btn.setAttribute("aria-expanded", "true");
         }
       }
 

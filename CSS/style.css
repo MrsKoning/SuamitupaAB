@@ -11,7 +11,7 @@
   --white: #ffffff;
   --text-dark: #131b23;
   --text-mid: #4a5568;
-  --text-light: #718096;
+  --text-light: #5a6a7e; /* uppjusterad från #718096 → bättre kontrast på vit */
   --bg-alt: #f7f9fc;
   --border: #e2e8f0;
   --radius: 10px;
@@ -20,7 +20,6 @@
   --shadow-lg: 0 8px 32px rgba(0, 53, 128, 0.12);
   --transition: 0.3s ease;
 }
-
 *,
 *::before,
 *::after {
@@ -103,12 +102,13 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-left: 1rem;
 }
 
 .header-logo img {
-  height: 50px;
+  height: 75px;
   width: auto;
-  max-height: 50px;
+  max-height: 75px;
   text-shadow:
     0 1px 4px rgba(0, 0, 0, 0.5),
     0 1px 4px rgba(0, 0, 0, 0.5),
@@ -164,7 +164,7 @@ a {
   font-family: "Arial", sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--blue-dark);
   text-shadow: none;
   transition: color var(--transition);
 }
@@ -200,9 +200,8 @@ a {
     padding: 0;
     color: var(--white);
     text-shadow:
-      0 1px 4px rgba(0, 0, 0, 0.5),
-      0 1px 4px rgba(0, 0, 0, 0.5),
-      0 1px 4px rgba(0, 0, 0, 0.5);
+      0 1px 3px rgba(0, 0, 0, 0.9),
+      0 2px 12px rgba(0, 0, 0, 0.7);
     font-size: 1.5rem;
     font-weight: 700;
   }
@@ -214,7 +213,7 @@ a {
   }
 
   #site-header.scrolled .menu a {
-    color: var(--text-dark);
+    color: var(--blue-dark);
     text-shadow: none;
   }
 
@@ -229,109 +228,95 @@ a {
    =================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    135deg,
-    var(--blue-dark) 0%,
-    var(--blue) 60%,
-    #1a56b0 100%
-  );
   overflow: hidden;
 }
-.hero img {
+
+/* Bilden täcker hela hero */
+.hero-image-wrap {
   position: absolute;
   inset: 0;
+}
+
+.hero-image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: blur(2px) brightness(0.75);
-  transform: scale(1.03);
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.65) 100%
-  );
-  z-index: 0;
 }
 
-.opacity-70 {
-  opacity: 0.9;
-}
-
+/* Glasspanel till vänster */
 .hero-content {
   position: relative;
-  z-index: 1;
-  text-align: center;
-  color: var(--white);
-  padding: 2rem;
-  max-width: 680px;
+  z-index: 2;
+  margin-left: 0;
+  padding: 3.5rem;
+  padding-top: 7rem;
+  max-width: 420px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.65);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0;
+  color: var(--blue-dark);
 }
 
-/* .hero-eyebrow {
-  font-family: "Arial", sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 1rem;
-} */
-
 .hero-content h1 {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.2;
   margin-bottom: 1.25rem;
-  text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.9),
-    0 4px 16px rgba(0, 0, 0, 0.7),
-    0 8px 32px rgba(0, 0, 0, 0.5);
+  color: var(--blue-dark);
+  text-shadow: none;
 }
 
 .hero-sub {
   font-family: "Arial", sans-serif;
-  font-size: 1.5rem;
-  color: var(--white);
-  max-width: 480px;
-  margin: 0 auto 2rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  opacity: 1;
   line-height: 1.7;
-  text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.9),
-    0 4px 16px rgba(0, 0, 0, 0.7);
+  margin-bottom: 2rem;
 }
 
 .hero-btn {
-  display: inline-block;
-  background: var(--blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--blue-dark);
   color: var(--white);
   font-family: "Arial", sans-serif;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.75rem 1.75rem;
   border-radius: var(--radius-sm);
   transition:
     background var(--transition),
     transform var(--transition);
-  box-shadow: 0 8px 32px #ffffff(0, 53, 128, 0.12);
-}
-.hero-btn i {
-  margin-right: 0.5rem;
-  font-size: 1.2em;
 }
 
 .hero-btn:hover {
+  background: var(--blue);
+  color: var(--white);
   transform: translateY(-2px);
-  background-color: #b5d4f4;
-  color: #003580;
 }
 
+/* Mobil */
+@media (max-width: 768px) {
+  .hero-content {
+    margin: 0;
+    padding: 2rem;
+    max-width: 100%;
+    min-height: 100vh;
+  }
+}
 /* ===================================
    SEKTIONER – gemensam
    =================================== */
@@ -362,8 +347,8 @@ a {
 
 .section-header p {
   font-family: "Arial", sans-serif;
-  font-size: 0.95rem;
-  color: var(--text-light);
+  font-size: 1rem;
+  color: var(--text-dark);
 }
 
 /* ===================================
@@ -416,7 +401,8 @@ a {
 .card-address {
   font-family: "Arial", sans-serif;
   font-size: 0.8rem;
-  color: var(--text-light);
+  font-weight: 500;
+  color: var(--text-dark);
 }
 
 .hours {
@@ -437,7 +423,8 @@ a {
 }
 
 .day {
-  color: var(--text-mid);
+  font-weight: 600;
+  color: var(--text-dark);
 }
 
 .time {
@@ -536,10 +523,14 @@ a {
   max-width: 500px;
   margin: 0 auto;
 }
+.contact-mobilnr {
+  font-weight: 600;
+  color: var(--text-dark);
+}
 
 .contact-box p {
   font-family: "Arial", sans-serif;
-  color: var(--text-mid);
+  color: var(--text-dark);
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
 }
@@ -600,7 +591,7 @@ a {
 .footer-copy {
   font-family: "Arial", sans-serif;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .footer-copy a {
