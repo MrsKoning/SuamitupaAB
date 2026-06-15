@@ -118,10 +118,6 @@ a {
   height: 75px;
   width: auto;
   max-height: 75px;
-  text-shadow:
-    0 1px 4px rgba(0, 0, 0, 0.5),
-    0 1px 4px rgba(0, 0, 0, 0.5),
-    0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Hamburger */
@@ -142,7 +138,6 @@ a {
   display: none;
   list-style: none;
   flex-direction: column;
-  background: transparent;
   position: absolute;
   top: 100%;
   right: 0;
@@ -179,7 +174,7 @@ a {
 }
 
 /* Desktop */
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .menu-icon {
     display: none;
   }
@@ -187,7 +182,6 @@ a {
   .menu {
     display: block;
     position: static;
-    background: transparent;
     width: auto;
   }
 
@@ -196,7 +190,6 @@ a {
     flex-direction: row;
     align-items: center;
     gap: 2rem;
-    background: transparent;
     box-shadow: none;
     border-radius: 0;
   }
@@ -347,7 +340,7 @@ a {
 }
 
 /* Mobil */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hero {
     flex-direction: column;
     height: auto;
