@@ -433,8 +433,8 @@ a {
   font-family: "Arial", sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--blue);
-  background: var(--blue-light);
+  background: var(--blue);
+  color: var(--white);
   border: 1px solid var(--blue-border);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
@@ -442,7 +442,8 @@ a {
 }
 
 .map-link:hover {
-  background: #d0e7f8;
+  color: var(--blue);
+  background: var(--blue-light);
 }
 
 /* ===================================
@@ -551,7 +552,8 @@ a {
 }
 
 .contact-btn:hover {
-  background: var(--blue-dark);
+  color: var(--blue);
+  background: var(--blue-light);
   transform: translateY(-1px);
 }
 
@@ -590,11 +592,11 @@ a {
 
 .footer-copy a {
   color: var(--white);
+  text-decoration: underline;
 }
 
 .footer-copy a:hover {
-  color: var(--white);
-  text-decoration: underline;
+  color: var(--text-light);
 }
 
 /* ===================================
