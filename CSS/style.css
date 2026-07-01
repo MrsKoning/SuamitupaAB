@@ -216,29 +216,12 @@ a {
   position: relative;
   margin-top: 92px;
   height: calc(100dvh - 92px);
-  display: flex;
-  align-items: center;
   overflow: hidden;
 }
 
-/* Bilden täcker hela hero */
 .hero-image-wrap {
-  position: relative;
-  inset: 0;
-  flex: 1;
-  height: 100%;
-  align-self: stretch;
-}
-.hero-image-wrap::after {
-  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 60%,
-    rgba(0, 0, 0, 0.25) 100%
-  );
-  pointer-events: none;
 }
 
 .hero-image-wrap img {
@@ -249,56 +232,56 @@ a {
   object-position: center;
 }
 
-/* Glasspanel till vänster */
+/* Gradient-banner längst ner */
 .hero-content {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
-  margin-left: 0;
-  padding: 3.5rem;
-  max-width: 420px;
-  height: 100%;
+  padding: 2rem 3rem 1.75rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 20, 60, 0.85) 0%,
+    rgba(0, 20, 60, 0.6) 60%,
+    transparent 100%
+  );
+  color: var(--white);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.65);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border-right: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 0;
-  color: var(--blue-dark);
+  align-items: center;
+  text-align: center;
 }
 
 .hero-content h1 {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 400;
   line-height: 1.2;
-  margin-bottom: 1.25rem;
-  color: var(--blue-dark);
-  text-shadow: none;
+  margin-bottom: 1rem;
+  color: var(--white);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.3);
+
+  white-space: nowrap;
 }
 
 .hero-sub {
-  font-family: "Arial", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--blue-dark);
-  opacity: 1;
-  line-height: 1.7;
-  margin-bottom: 2rem;
+  display: none; /* skippar subtexten i banner-läget */
 }
 
 .hero-buttons {
   display: flex;
   gap: 0.75rem;
-  flex-wrap: wrap;
 }
 
 .hero-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--blue-dark);
-  color: var(--white);
+  background: var(--white);
+  color: var(--blue-dark);
   font-family: "Arial", sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
@@ -315,51 +298,14 @@ a {
   transform: translateY(-2px);
 }
 
-.hero-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: var(--blue-dark);
-  font-family: "Arial", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  padding: 0.75rem 1.75rem;
-  border: 2px solid var(--blue-dark);
-  border-radius: var(--radius-sm);
-  transition:
-    background var(--transition),
-    color var(--transition),
-    transform var(--transition);
-}
-
-.hero-btn-secondary:hover {
-  background: var(--blue-dark);
-  color: var(--white);
-  transform: translateY(-2px);
-}
-
 /* Mobil */
 @media (max-width: 1024px) {
   .hero {
-    flex-direction: column;
-    height: auto;
-    margin-top: 92px;
+    height: calc(100dvh - 92px);
   }
 
   .hero-content {
-    margin: 0;
-    padding: 2rem;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    border-right: none;
-  }
-
-  .hero-image-wrap {
-    flex: none;
-    height: 50vh;
-    width: 100%;
+    padding: 2rem 1.5rem 2rem;
   }
 }
 /* ===================================
@@ -396,7 +342,9 @@ a {
   font-size: 1rem;
   color: var(--text-dark);
 }
-
+.section-cta {
+  text-align: center;
+}
 /* ===================================
    PLATSKORT
    =================================== */
